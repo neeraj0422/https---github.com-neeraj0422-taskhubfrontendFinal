@@ -1,0 +1,41 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color:	#aad6ec;
+    align-items: center;
+    height: 60px;
+    padding: 0 20px;
+
+    .header__logo {
+        h3 {
+            color: white;
+            font-weight: 300;
+        }
+        .img{
+            height: 21vh; 
+            margin-top: 22px;
+            padding: 10px;
+        }
+    }
+
+    .header__buttons {
+        button {
+            margin-left: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            transition: background-color 0.3s ease; /* Add a smooth transition for background-color changes */
+        }
+
+        /* Apply styles when hovering over the button */
+        button:hover {
+            background-color: #007bff; /* Change to your desired hover background color */
+            color: #fff; /* Change to your desired hover text color */
+            /* You can add any other styles you want to apply on hover here */
+            /* For example, changing the button's border color or adding a box shadow */
+            border-color: #0056b3; /* Change to your desired border color on hover */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a box shadow on hover */
+        }
+    }
+}

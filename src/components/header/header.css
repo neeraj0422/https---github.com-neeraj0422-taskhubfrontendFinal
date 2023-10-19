@@ -1,0 +1,44 @@
+/* Apply a CSS Reset to normalize styles across browsers */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles for fonts, colors, etc. */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: 	#aad6ec; /* Use a suitable shade of red */
+  align-items: center;
+  height: 60px;
+  padding: 0 20px;
+  transition: background-color 0.3s;
+}
+
+.header:hover {
+  background-color: #81b1ce; /* Darker shade of red on hover */
+}
+
+.header__logo h5 {
+  color: white;
+  font-weight: 300;
+}
+
+.header .button {
+  background-color: white;
+  color: 	#aad6ec; /* Match the header background color */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.header .button:hover {
+  background-color: #81b1ce; /* Light red on hover */
+  color: white;
+}

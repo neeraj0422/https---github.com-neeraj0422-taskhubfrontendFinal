@@ -1,0 +1,73 @@
+/* Apply a CSS Reset to normalize styles across browsers */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles for fonts, colors, and body background */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+/* Signup form container */
+.signup-form {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Signup form wrapper */
+.signup-form__wrapper {
+  width: 50%;
+  height: 400px;
+}
+
+/* Form container */
+.signup-form__wrapper .form {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+/* Form hover effect */
+.signup-form__wrapper .form:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+  transform: scale(1.02);
+}
+
+/* Form group (individual input groups) */
+.signup-form__wrapper .form .form-group {
+  margin-bottom: 1rem;
+  width: 50%;
+  text-align: center;
+}
+
+/* Input fields within the form group */
+.signup-form__wrapper .form .form-group input {
+  width: 100%;
+  padding: 1rem;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+/* Input field focus effect */
+.signup-form__wrapper .form .form-group input:focus {
+  border: 1px solid #007BFF;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Add more styles and transitions as needed */

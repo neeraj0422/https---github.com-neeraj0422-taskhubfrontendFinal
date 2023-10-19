@@ -1,0 +1,57 @@
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem auto;
+    width: 90%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.3s ease; /* Transition effect for smoother changes */
+  
+    li {
+      padding: 1rem;
+      flex: 1;
+      transition: background-color 0.3s ease, color 0.3s ease; /* Transition for color change */
+  
+      button {
+        margin: 5px;
+      }
+    }
+  
+    p {
+      font-size: 14px;
+    }
+  }
+  
+  .completed {
+    background-color: #03C04A;
+    color: #000;
+    transition: all 0.3s ease; /* Transition effect for smoother changes */
+  }
+  
+  
+  /* Backlog State */
+  .backlog {
+    background-color: #ed4c30; /* Tomato Red */
+    color: #FFFFFF; /* White */
+  }
+  
+  /* Doing State */
+  .doing {
+    background-color: #87CEEB; /* Sky Blue */
+    color: #000000; /* Black */
+  }
+  
+  /* Todo State */
+  .todo {
+    background-color: #cacd32; /* Lime Green */
+    color: #000000; /* Black */
+  }
+  
+  /* Completed State */
+  .completed {
+    background-color: #03C04A; /* Green */
+    color: #000000; /* Black */
+  }  
+  .complete{
+    background-color: #03C04A;
+  }

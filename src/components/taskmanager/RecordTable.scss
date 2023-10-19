@@ -1,0 +1,70 @@
+/* RecordTable.css */
+
+/* Apply general table styles */
+.white-text-table {
+  color: white;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color:#51d5ec
+    
+  }
+  
+  th, td {
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #ec1374;
+    color: #fff;
+  }
+  
+  /* Status-specific styles */
+   .select {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  /* Status-specific color coding */
+  td select.pending {
+    background-color: red !important;
+  }
+  
+  td select.inprogress {
+    background-color: yellow !important;
+  }
+  
+  td select.completed {
+    background-color: green ;
+  }
+  
+  /* Hover effect */
+  td select:hover {
+    filter: brightness(1.2);
+  }
+  
+  button {
+    background-color: red;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  /* Hover effect */
+  button:hover {
+    background-color: #ff5733; /* Darker shade of red */
+  }
+  
+  /* Add more styles as needed */
+  
