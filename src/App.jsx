@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import RecordTable from './components/taskmanager/RecordTable';
 import AddRecord from './components/taskmanager/AddRecord';
 import Header from './components/header/Header';
-import Signin from './components/registration/signIn';
+import Signin from './components/registration/signin';
 import Signup from './components/registration/signUp';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './styles/main.scss';
