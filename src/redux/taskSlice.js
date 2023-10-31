@@ -60,7 +60,7 @@ export const addTask = (task, deadline, id, token) => async (dispatch) => {
 			deadline,
 			id,
 		};
-		const response = await axios.post('http://localhost:4000/task/add', taskData);
+		const response = await axios.post('https://taskhubbackenddd.onrender.com/task/add', taskData);
 		if (response.status === 200) {
 			localStorage.setItem('task', JSON.stringify(response.data));
 			dispatch(taskAddedSuccessfully(response.data));
@@ -95,7 +95,7 @@ export const getAllTasks = (token, id) => async (dispatch) => {
 
 	try {
 		const response = await axios.get(
-			'http://localhost:4000/task/tasks',
+			'https://taskhubbackenddd.onrender.com/task/tasks',
 			config
 		);
 
@@ -124,7 +124,7 @@ export const arrowClick = (item, string,userid) => async () => {
 
 	try {
 		let response = await axios.put(
-			`http://localhost:4000/task/${taskData.id}`,
+			`https://taskhubbackenddd.onrender.com/task/${taskData.id}`,
 			taskData
 		);
 
