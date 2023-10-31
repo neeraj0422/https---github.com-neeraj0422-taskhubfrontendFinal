@@ -23,7 +23,7 @@ const Home = () => {
           </div>
         </div>
 
-        <h2>Organize it all Here</h2>
+        <h2>Organize it all</h2>
         <p>With Task HuB</p>
 
         {currentUser && currentUser.token ? (
@@ -32,7 +32,7 @@ const Home = () => {
           </Link>
         ) : (
           <Link to="/signin" className="button">
-            Dive in
+            Get Started
           </Link>
         )}
       </div>
