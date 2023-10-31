@@ -93,7 +93,7 @@ export const signin = (user) => async (dispatch) => {
 			history.push('/dashboard');
 			toast.success('login successfull');
 
-			window.location.reload();
+			// window.location.reload();
 		} else {
 			dispatch(loginFailure());
 			toast.error('login failed');
