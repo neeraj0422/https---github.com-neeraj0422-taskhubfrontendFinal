@@ -47,17 +47,24 @@ const ListCard = ({ item }) => {
   return (
     <div>
       <ul className={`menu ${getStatusStyles(item.status)}`}>
-        <li>
+        {/* <li>
           <p>{item._id}</p>
-        </li>
+        </li> */}
         <li>
           <p>{item.task}</p>
         </li>
-        <li>
-          <p>{item.status}</p>
-        </li>
+        
         <li>
           <p>{getDate(item.deadline)}</p>
+        </li>
+        <li>
+          <p>{item?.createdBy?.username}</p>
+        </li>
+        <li>
+          <p>{item?.lastModifiedBy?.username}</p>
+        </li>
+        <li>
+          <p>{item.status}</p>
         </li>
         <li className="list-card-button">
           <button

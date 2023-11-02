@@ -13,7 +13,7 @@ body {
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: 	#aad6ec; /* Use a suitable shade of red */
+  background-color: #FFFFFF; /* 60% - Dominant Color */
   align-items: center;
   height: 60px;
   padding: 0 20px;
@@ -21,17 +21,18 @@ body {
 }
 
 .header:hover {
-  background-color: #81b1ce; /* Darker shade of red on hover */
+  background-color: #F79A1F; /* 30% - Secondary Color on hover */
 }
 
 .header__logo h5 {
   color: white;
   font-weight: 300;
+  margin-top: 20%;
 }
 
 .header .button {
-  background-color: white;
-  color: 	#aad6ec; /* Match the header background color */
+  background-color: #EB4F47; /* 10% - Accent Color */
+  color: #FFFFFF; /* Text color matching the header background color */
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -39,6 +40,6 @@ body {
 }
 
 .header .button:hover {
-  background-color: #81b1ce; /* Light red on hover */
-  color: white;
+  background-color: #EB4F47; /* 10% - Accent Color on hover */
+  color: #FFFFFF; /* Text color matching the header background color on hover */
 }

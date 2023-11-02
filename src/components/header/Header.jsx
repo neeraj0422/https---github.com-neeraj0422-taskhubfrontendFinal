@@ -33,7 +33,7 @@ const Header = () => {
             style={{
               width: '90px', // Adjust the width as needed
               marginRight: '10px',
-              marginTop:'17px' // Adjust the margin as needed
+              marginTop:'23px' // Adjust the margin as needed
             }}
           />
         </div>

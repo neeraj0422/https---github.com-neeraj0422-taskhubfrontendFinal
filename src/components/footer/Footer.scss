@@ -2,17 +2,13 @@ footer {
   width: 1378px;
   height: 60px;
   padding: 2vmax;
-  background-color: #4411ff;
-  color: white;
+  background-color: #FFFFFF; /* 60% - Dominant Color */
+  color: #F79A1F; /* 30% - Secondary Color */
   display: flex;
   align-items: center;
-  position: fixed; /* Set the position to fixed */
-  bottom: 1.5vmax; /* Stick it to the bottom of the viewport */
+  position: fixed;
+  bottom: 1.5vmax;
 }
-
-/* The rest of your styles remain the same */
-
-
 
 .leftFooter {
   width: 20%;
@@ -48,7 +44,7 @@ footer {
 .midFooter > h1 {
   font-size: 4vmax;
   font-family: "Roboto";
-  color: #eb4034;
+  color: #EB4F47; /* 10% - Accent Color */
 }
 
 .midFooter > p {
@@ -75,13 +71,13 @@ footer {
   text-decoration: none;
   font-size: 1.3vmax;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  color: #ff4411;
+  color: #FF4411;
   transition: all 0.5s;
   margin: 0.5vmax;
 }
 
 .rightFooter > a:hover {
-  color: #eb4034;
+  color: #EB4F47; /* 10% - Accent Color */
 }
 
 .footer p.p {

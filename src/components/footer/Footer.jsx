@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="midFooter">
         <br></br>
         <br></br>
-        <p className="p">Task HuB</p>
+        {/* <p className="p">Task HuB</p> */}
 
         
       </div>

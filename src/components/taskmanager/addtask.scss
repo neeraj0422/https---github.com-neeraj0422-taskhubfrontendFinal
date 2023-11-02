@@ -19,7 +19,7 @@
     padding: 10px;
     border: none;
     outline: none;
-    background-color: whitesmoke;
+    background-color: #FFFFFF; /* 60% - Dominant Color */
     border-radius: 5px;
 }
 
@@ -38,15 +38,14 @@
 }
 
 .addtask button {
-    background-color: #007BFF;
-    color: #fff;
+    background-color: #F79A1F; /* 30% - Secondary Color */
+    color: #FFFFFF; /* Text color matching the dominant color */
     border: none;
-    // padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .addtask button:hover {
-    background-color: #0056b3;
+    background-color: #EB4F47; /* 10% - Accent Color on hover */
 }

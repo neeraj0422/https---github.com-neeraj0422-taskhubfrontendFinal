@@ -3,8 +3,8 @@ import Footer from '../../components/footer/Footer';
 import '../../components/footer/Footer.scss';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import logo from '../../components/logoo.png';
+import logo from '../../components/logoa.gif'
+// import logo from '../../components/logoo.png';
 
 const Home = () => {
   const { auth } = useSelector((state) => ({ ...state }));

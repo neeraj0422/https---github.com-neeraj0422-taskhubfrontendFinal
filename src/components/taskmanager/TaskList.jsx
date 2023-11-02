@@ -20,17 +20,22 @@ const TaskList = () => {
   return (
     <div>
       <ul className='list-header'>
-        <li>
-          <h5>Id</h5>
-        </li>
+       
         <li>
           <h5>Issue Name</h5>
         </li>
-        <li>
-          <h5>Status</h5>
-        </li>
+        
         <li>
           <h5>Deadline</h5>
+        </li>
+        <li>
+          <h5>Created By</h5>
+        </li>
+        <li>
+          <h5>Modified By</h5>
+        </li>
+        <li>
+          <h5>Status</h5>
         </li>
         <li>
           <h5>Action</h5>
