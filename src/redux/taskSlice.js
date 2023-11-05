@@ -95,7 +95,7 @@ export const getAllTasks = (token, id) => async (dispatch) => {
 
 	try {
 		const response = await axios.get(
-			'http://localhost:4000/task/tasks',
+			'https://taskhubbackenddd.onrender.com/task/tasks',
 			config
 		);
   console.log("response",response)
