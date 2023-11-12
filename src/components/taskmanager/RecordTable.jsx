@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './RecordTable.scss';
 
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
 const RecordTable = () => {
   const [records, setRecords] = useState([]);
   const [PayslipsOptions] = useState(["pending", "inprogress", "completed"]);
@@ -27,13 +29,16 @@ const RecordTable = () => {
     "inprogress",
     "completed",
   ]);
+  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1); // Default to current month
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear()); // Default to current year
+
 
   useEffect(() => {
     // Fetch records from the API
-    axios.get("https://taskhubbackenddd.onrender.com/table/records").then((response) => {
+    axios.get(`https://taskhubbackenddd.onrender.com/table/records?month=${selectedMonth}&year=${selectedYear}`).then((response) => {
       setRecords(response.data);
     });
-  }, []);
+  }, [selectedMonth, selectedYear]);
   const handleBaseconeStatusChange = (id, Basecone) => {
     // Update the Basecone of a record
     axios
@@ -177,6 +182,26 @@ const RecordTable = () => {
 
   return (
     <div>
+      <label>
+        Select Month:
+        <select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
+          {months.map((month, index) => (
+      <option key={index + 1} value={index + 1}>{month}</option>
+    ))}
+        </select>
+      </label>
+
+      <label>
+        Select Year:
+        <select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
+          {[...Array(10).keys()].map((year) => (
+            <option key={new Date().getFullYear() - 5 + year} value={new Date().getFullYear() - 5 + year}>
+              {new Date().getFullYear() - 5 + year}
+            </option>
+          ))}
+        </select>
+      </label>
+
       <table>
         <thead>
           <tr>
