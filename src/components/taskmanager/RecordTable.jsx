@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './RecordTable.scss';
+import 'chart.js/auto';
+import { Doughnut } from 'react-chartjs-2';
+import PieChart from './PieChart';
+
+
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 const RecordTable = () => {
   const [records, setRecords] = useState([]);
@@ -27,6 +33,43 @@ const RecordTable = () => {
     "inprogress",
     "completed",
   ]);
+  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1); // Default to current month
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear()); // Default to current year
+  const [selectedCompany, setSelectedCompany] = useState(null);
+  const [showPie, setShowPie] = useState(false);
+  const [pieChartData, setPieChartData] = useState({});
+const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleButtonClick = (record) => {
+    const sums = calculateRowSums(record);
+    const data = {
+      labels: ['Pending', 'In Progress', 'Completed'],
+      datasets: [
+        {
+          data: [sums.pending, sums.inprogress, sums.completed],
+          backgroundColor: ['#FF6384', '#FFCE56', '#36A2EB'],
+          hoverBackgroundColor: ['#FF6384', '#FFCE56', '#36A2EB'],
+        },
+      ],
+    };
+
+    setPieChartData(data);
+    setSelectedCompany(record.Company);
+    setShowPie(true);
+  };
+  // Define the calculateRowSums function
+  const calculateRowSums = (record) => {
+    const tasks = ["Basecone", "Bank", "SalaryEntry", "Payslips", "Dividend", "Corporatetax", "Vat", "AnnualTax", "CashFlowStatement", "ProfitLoss", "TrialBalance"];
+
+    const sums = {
+      pending: tasks.reduce((sum, task) => sum + (record[task] === "pending" ? 1 : 0), 0),
+      inprogress: tasks.reduce((sum, task) => sum + (record[task] === "inprogress" ? 1 : 0), 0),
+      completed: tasks.reduce((sum, task) => sum + (record[task] === "completed" ? 1 : 0), 0),
+    };
+
+    return sums;
+  };
+
 
   useEffect(() => {
     // Fetch records from the API
@@ -177,6 +220,26 @@ const RecordTable = () => {
 
   return (
     <div>
+     <div className="month">
+  <span className="label">Select Month:</span>
+  <select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
+    {months.map((month, index) => (
+      <option key={index + 1} value={index + 1}>{month}</option>
+    ))}
+  </select>
+</div>
+
+<div className="year">
+  <span className="label">Select Year:</span>
+  <select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
+    {[...Array(10).keys()].map((year) => (
+      <option key={new Date().getFullYear() - 5 + year} value={new Date().getFullYear() - 5 + year}>
+        {new Date().getFullYear() - 5 + year}
+      </option>
+    ))}
+  </select>
+</div>
+
       <table>
         <thead>
           <tr>
@@ -207,7 +270,9 @@ const RecordTable = () => {
             <th>Profit&Loss</th>
 
             <th>Trial Balance</th>
-
+            <th>Pending Tasks</th>
+            <th>inProgress Tasks</th>
+            <th>Completed Tasks</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -216,7 +281,22 @@ const RecordTable = () => {
             <tr key={record._id}>
               <td>{record.S_NO}</td>
               <td>{record.Administration_number}</td>
-              <td>{record.Company}</td>
+              <td>
+                <button
+                  className="pie-button"
+                  onClick={() => handleButtonClick(record)}
+              
+                >
+                  {record.Company}
+                </button>
+                {showPie && selectedCompany && (
+  <div>
+    {/* Render the chart based on the selected company */}
+    <Doughnut data={pieChartData} />
+  </div>
+)}
+              </td>
+              
               <td>
               <select
   value={record.Basecone}
@@ -541,6 +621,9 @@ const RecordTable = () => {
 </select>
 
               </td>
+              <td>{calculateRowSums(record).pending}</td>
+            <td>{calculateRowSums(record).inprogress}</td>
+            <td>{calculateRowSums(record).completed}</td>
               <td>
                 <button onClick={() => handleDelete(record._id)}>Delete</button>
               </td>
@@ -548,7 +631,10 @@ const RecordTable = () => {
           ))}
         </tbody>
       </table>
+      
+     
     </div>
+    
   );
 };
 

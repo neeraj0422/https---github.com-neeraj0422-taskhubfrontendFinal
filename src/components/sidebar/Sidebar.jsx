@@ -5,6 +5,7 @@ import DataTable from './datatable/DataTable';
 import speed from '../../components/speed.gif'
 import user from '../../components/user.png'
 
+
 const Sidebar = () => {
   const { auth } = useSelector((state) => ({ ...state }));
   const { currentUser } = auth;
@@ -17,8 +18,10 @@ const Sidebar = () => {
   <img src={user} alt="Your Logo" className="logoo" />
   <h5>{currentUser.username}</h5>
 </div>
+
         <li className='list-item'>
           <Link to='/dashboard'>Dashboard</Link>
+          
 
         </li>
         <li className='list-item'>
