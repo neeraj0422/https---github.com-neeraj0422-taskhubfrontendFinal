@@ -223,7 +223,12 @@ const [isModalOpen, setModalOpen] = useState(false);
 
   return (
     <div>
-
+{showPie && selectedCompany && (
+ <div className="chart-container">
+ {/* Render the chart based on the selected company */}
+ <Doughnut data={pieChartData} />
+</div>
+)}
      <div className="month">
   <span className="label">Select Month:</span>
   <select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
@@ -294,12 +299,7 @@ const [isModalOpen, setModalOpen] = useState(false);
                 >
                   {record.Company}
                 </button>
-                {showPie && selectedCompany && (
-  <div>
-    {/* Render the chart based on the selected company */}
-    <Doughnut data={pieChartData} />
-  </div>
-)}
+                
               </td>
               
               <td>
