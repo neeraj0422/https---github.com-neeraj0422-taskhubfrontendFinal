@@ -1,6 +1,4 @@
 import './home.scss';
-import Footer from '../../components/footer/Footer';
-import '../../components/footer/Footer.scss';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import logo from '../../components/logoa.gif'
@@ -36,7 +34,7 @@ const Home = () => {
           </Link>
         )}
       </div>
-	  <Footer/>
+	  
     </div>
   );
 };
