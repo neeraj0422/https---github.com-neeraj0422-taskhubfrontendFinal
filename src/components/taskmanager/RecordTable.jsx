@@ -6,6 +6,7 @@ import { Doughnut } from 'react-chartjs-2';
 import PieChart from './PieChart';
 
 
+
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 const RecordTable = () => {
@@ -35,6 +36,7 @@ const RecordTable = () => {
   ]);
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1); // Default to current month
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear()); // Default to current year
+
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [showPie, setShowPie] = useState(false);
   const [pieChartData, setPieChartData] = useState({});
@@ -71,12 +73,13 @@ const [isModalOpen, setModalOpen] = useState(false);
   };
 
 
+
   useEffect(() => {
     // Fetch records from the API
-    axios.get("https://taskhubbackenddd.onrender.com/table/records").then((response) => {
+    axios.get(`https://taskhubbackenddd.onrender.com/table/records?month=${selectedMonth}&year=${selectedYear}`).then((response) => {
       setRecords(response.data);
     });
-  }, []);
+  }, [selectedMonth, selectedYear]);
   const handleBaseconeStatusChange = (id, Basecone) => {
     // Update the Basecone of a record
     axios
@@ -220,6 +223,7 @@ const [isModalOpen, setModalOpen] = useState(false);
 
   return (
     <div>
+
      <div className="month">
   <span className="label">Select Month:</span>
   <select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
@@ -239,6 +243,7 @@ const [isModalOpen, setModalOpen] = useState(false);
     ))}
   </select>
 </div>
+
 
       <table>
         <thead>
