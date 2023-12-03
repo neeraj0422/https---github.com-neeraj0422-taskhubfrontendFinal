@@ -29,6 +29,9 @@ const TaskList = () => {
           <h5>Deadline</h5>
         </li>
         <li>
+          <h5>Assign To </h5>
+        </li>
+        <li>
           <h5>Created By</h5>
         </li>
         <li>

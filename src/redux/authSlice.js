@@ -55,7 +55,7 @@ export const register = (user) => async (dispatch) => {
 		};
 
 		const response = await axios.post(
-			'https://taskhubbackenddd.onrender.com/auth/register',
+			'http://localhost:4000/auth/register',
 			user,
 			config
 		);
@@ -83,7 +83,7 @@ export const signin = (user) => async (dispatch) => {
 			password: user.password,
 		};
 		const response = await axios.post(
-			'https://taskhubbackenddd.onrender.com/auth/signin',
+			'http://localhost:4000/auth/signin',
 			userData
 		);
 		if (response) {

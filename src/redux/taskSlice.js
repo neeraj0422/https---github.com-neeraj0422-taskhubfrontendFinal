@@ -53,14 +53,18 @@ export const {
 
 export default taskSlice.reducer;
 
-export const addTask = (task, deadline, id, token) => async (dispatch) => {
+export const addTask = (task, deadline,assignee, id, token) => async (dispatch) => {
 	try {
 		const taskData = {
 			task,
 			deadline,
+			assignee,
 			id,
+			token
 		};
-		const response = await axios.post('https://taskhubbackenddd.onrender.com/task/add', taskData);
+		console.log('taskData:', taskData);
+
+		const response = await axios.post('http://localhost:4000/task/add', taskData);
 		if (response.status === 200) {
 			localStorage.setItem('task', JSON.stringify(response.data));
 			dispatch(taskAddedSuccessfully(response.data));
@@ -95,7 +99,7 @@ export const getAllTasks = (token, id) => async (dispatch) => {
 
 	try {
 		const response = await axios.get(
-			'https://taskhubbackenddd.onrender.com/task/tasks',
+			'http://localhost:4000/task/tasks',
 			config
 		);
   console.log("response",response)
@@ -124,7 +128,7 @@ export const arrowClick = (item, string,userid) => async () => {
 
 	try {
 		let response = await axios.put(
-			`https://taskhubbackenddd.onrender.com/task/${taskData.id}`,
+			`http://localhost:4000/task/${taskData.id}`,
 			taskData
 		);
 
@@ -139,7 +143,7 @@ export const arrowClick = (item, string,userid) => async () => {
 
 export const deleteItem = (id) => async (dispatch) => {
 	try {
-		let res = await axios.delete(`https://taskhubbackenddd.onrender.com/task/${id}`);
+		let res = await axios.delete(`http://localhost:4000/task/${id}`);
 		if (res.status === 200) {
 			dispatch(deleteSuccess());
 			toast.success('Task deleted successfully');

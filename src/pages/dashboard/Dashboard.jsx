@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { Calendar } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { getAllTasks } from '../../redux/taskSlice';
-import man from '../../components/man.png';
+import man from '../../components/mann.png';
 
 const Dashboard = () => {
   const tasklist = useSelector((state) => state.task);

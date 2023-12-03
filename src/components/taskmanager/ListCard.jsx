@@ -58,6 +58,9 @@ const ListCard = ({ item }) => {
           <p>{getDate(item.deadline)}</p>
         </li>
         <li>
+          <p>{item?.assignee?.username}</p>
+        </li>
+        <li>
           <p>{item?.createdBy?.username}</p>
         </li>
         <li>

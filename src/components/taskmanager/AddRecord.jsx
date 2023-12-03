@@ -30,7 +30,7 @@ const AddRecord = ({ onAdd }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('https://taskhubbackenddd.onrender.com/table/records', formData).then((response) => {
+    axios.post('http://localhost:4000/table/records', formData).then((response) => {
       onAdd(response.data);
       setFormData({
         S_NO: '',
