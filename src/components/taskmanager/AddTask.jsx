@@ -27,7 +27,7 @@ const AddTask = () => {
     // Fetch users from the API endpoint
     const fetchUsers = async () => {
       try {
-        const response = await fetch('http://localhost:4000/users');
+        const response = await fetch('https://taskhubbackenddd.onrender.com/users');
         const data = await response.json();
         setUsers(data);
       } catch (error) {
