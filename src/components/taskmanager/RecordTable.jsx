@@ -5,8 +5,6 @@ import 'chart.js/auto';
 import { Doughnut } from 'react-chartjs-2';
 import PieChart from './PieChart';
 
-
-
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 const RecordTable = () => {
@@ -16,31 +14,18 @@ const RecordTable = () => {
   const [BankOptions] = useState(["pending", "inprogress", "completed"]);
   const [SalaryEntryOptions] = useState(["pending", "inprogress", "completed"]);
   const [DividendOptions] = useState(["pending", "inprogress", "completed"]);
-  const [CorporatetaxOptions] = useState([
-    "pending",
-    "inprogress",
-    "completed",
-  ]);
+  const [CorporatetaxOptions] = useState(["pending", "inprogress", "completed"]);
   const [VatOptions] = useState(["pending", "inprogress", "completed"]);
   const [AnnualTaxOptions] = useState(["pending", "inprogress", "completed"]);
-  const [CashFlowStatementOptions] = useState([
-    "pending",
-    "inprogress",
-    "completed",
-  ]);
+  const [CashFlowStatementOptions] = useState(["pending", "inprogress", "completed"]);
   const [ProfitLossOptions] = useState(["pending", "inprogress", "completed"]);
-  const [TrialBalanceOptions] = useState([
-    "pending",
-    "inprogress",
-    "completed",
-  ]);
+  const [TrialBalanceOptions] = useState(["pending", "inprogress", "completed"]);
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1); // Default to current month
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear()); // Default to current year
-
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [showPie, setShowPie] = useState(false);
   const [pieChartData, setPieChartData] = useState({});
-const [isModalOpen, setModalOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const handleButtonClick = (record) => {
     const sums = calculateRowSums(record);
@@ -59,6 +44,7 @@ const [isModalOpen, setModalOpen] = useState(false);
     setSelectedCompany(record.Company);
     setShowPie(true);
   };
+
   // Define the calculateRowSums function
   const calculateRowSums = (record) => {
     const tasks = ["Basecone", "Bank", "SalaryEntry", "Payslips", "Dividend", "Corporatetax", "Vat", "AnnualTax", "CashFlowStatement", "ProfitLoss", "TrialBalance"];
@@ -71,8 +57,6 @@ const [isModalOpen, setModalOpen] = useState(false);
 
     return sums;
   };
-
-
 
   useEffect(() => {
     // Fetch records from the API
@@ -223,62 +207,42 @@ const [isModalOpen, setModalOpen] = useState(false);
 
   return (
     <div>
-{showPie && selectedCompany && (
- <div className="chart-container">
- {/* Render the chart based on the selected company */}
- <Doughnut data={pieChartData} />
-</div>
-)}
-     <div className="month">
-  <span className="label">Select Month:</span>
-  <select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
-    {months.map((month, index) => (
-      <option key={index + 1} value={index + 1}>{month}</option>
-    ))}
-  </select>
-</div>
+      <div className="month">
+        <span className="label">Select Month:</span>
+        <select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
+          {months.map((month, index) => (
+            <option key={index + 1} value={index + 1}>{month}</option>
+          ))}
+        </select>
+      </div>
 
-<div className="year">
-  <span className="label">Select Year:</span>
-  <select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
-    {[...Array(10).keys()].map((year) => (
-      <option key={new Date().getFullYear() - 5 + year} value={new Date().getFullYear() - 5 + year}>
-        {new Date().getFullYear() - 5 + year}
-      </option>
-    ))}
-  </select>
-</div>
-
+      <div className="year">
+        <span className="label">Select Year:</span>
+        <select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
+          {[...Array(10).keys()].map((year) => (
+            <option key={new Date().getFullYear() - 5 + year} value={new Date().getFullYear() - 5 + year}>
+              {new Date().getFullYear() - 5 + year}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <table>
         <thead>
           <tr>
             <th>S.NO.</th>
-
             <th>Administration number</th>
-
             <th>Company </th>
-
             <th>Basecone</th>
-
             <th>Bank</th>
-
             <th>Salary Entry</th>
-
             <th>Payslips</th>
-
             <th>Dividend</th>
-
             <th>Corporatetax</th>
-
             <th>VAT</th>
-
             <th>Annual tax</th>
-
             <th>Cash Flow Statement</th>
-
             <th>Profit&Loss</th>
-
             <th>Trial Balance</th>
             <th>Pending Tasks</th>
             <th>inProgress Tasks</th>
@@ -288,358 +252,354 @@ const [isModalOpen, setModalOpen] = useState(false);
         </thead>
         <tbody>
           {records.map((record) => (
-            <tr key={record._id}>
-              <td>{record.S_NO}</td>
-              <td>{record.Administration_number}</td>
-              <td>
-                <button
-                  className="pie-button"
-                  onClick={() => handleButtonClick(record)}
-              
-                >
-                  {record.Company}
-                </button>
-                
-              </td>
-              
-              <td>
-              <select
-  value={record.Basecone}
-  onChange={(e) => handleBaseconeStatusChange(record._id, e.target.value)}
-  style={{
-    padding: "5px 10px",
-    borderRadius: "4px",
-    color: "#000",
-    fontWeight: "bold",
-    cursor: "pointer",
-    transition: "border 0.3s, color 0.3s",
-    border: `2px solid ${
-      record.Basecone === "pending"
-        ? "red"
-        : record.Basecone === "inprogress"
-        ? "yellow"
-        : "green"
-    }`,
-  }}
->
-  {BaseconeOptions.map((option) => (
-    <option key={option} value={option}>
-      {option}
-    </option>
-  ))}
-</select>
+            <>
+              <tr key={record._id}>
+                <td>{record.S_NO}</td>
+                <td>{record.Administration_number}</td>
+                <td>
+                  <button
+                    className="pie-button"
+                    onClick={() => handleButtonClick(record)}
+                  >
+                    {record.Company}
+                  </button>
 
-              </td>
-              <td>
-              <select
-  value={record.Bank}
-  onChange={(e) => handleBankStatusChange(record._id, e.target.value)}
-  style={{
-    padding: "5px 10px",
-    borderRadius: "4px",
-    color: "#000",
-    fontWeight: "bold",
-    cursor: "pointer",
-    transition: "border 0.3s, color 0.3s",
-    border: `2px solid ${
-      record.Bank === "pending"
-        ? "red"
-        : record.Bank === "inprogress"
-        ? "yellow"
-        : "green"
-    }`,
-  }}
->
-  {BankOptions.map((option) => (
-    <option key={option} value={option}>
-      {option}
-    </option>
-  ))}
-</select>
+                </td>
 
-              </td>
-              <td>
-              <select
-  value={record.SalaryEntry}
-  onChange={(e) => handleSalaryEntryStatusChange(record._id, e.target.value)}
-  style={{
-    border: "none",
-    padding: "5px 10px",
-    borderRadius: "4px",
-    color: "#000",
-    fontWeight: "bold",
-    cursor: "pointer",
-    transition: "border 0.3s, color 0.3s",
-    border: `2px solid ${
-      record.SalaryEntry === "pending"
-        ? "red"
-        : record.SalaryEntry === "inprogress"
-        ? "yellow"
-        : "green"
-    }`,
-  }}
->
-  {SalaryEntryOptions.map((option) => (
-    <option key={option} value={option}>
-      {option}
-    </option>
-  ))}
-</select>
+                <td>
+                  <select
+                    value={record.Basecone}
+                    onChange={(e) => handleBaseconeStatusChange(record._id, e.target.value)}
+                    style={{
+                      padding: "5px 10px",
+                      borderRadius: "4px",
+                      color: "#000",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      transition: "border 0.3s, color 0.3s",
+                      border: `2px solid ${record.Basecone === "pending"
+                        ? "red"
+                        : record.Basecone === "inprogress"
+                          ? "yellow"
+                          : "green"
+                        }`,
+                    }}
+                  >
+                    {BaseconeOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
 
-              </td>
-              <td>
-              <select
-  value={record.Payslips}
-  onChange={(e) => handlePayslipsStatusChange(record._id, e.target.value)}
-  style={{
-    border: "none",
-    padding: "5px 10px",
-    borderRadius: "4px",
-    color: "#000",
-    fontWeight: "bold",
-    cursor: "pointer",
-    transition: "border 0.3s, color 0.3s",
-    border: `2px solid ${
-      record.Payslips === "pending"
-        ? "red"
-        : record.Payslips === "inprogress"
-        ? "yellow"
-        : "green"
-    }`,
-  }}
->
-  {PayslipsOptions.map((option) => (
-    <option key={option} value={option}>
-      {option}
-    </option>
-  ))}
-</select>
+                </td>
+                <td>
+                  <select
+                    value={record.Bank}
+                    onChange={(e) => handleBankStatusChange(record._id, e.target.value)}
+                    style={{
+                      padding: "5px 10px",
+                      borderRadius: "4px",
+                      color: "#000",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      transition: "border 0.3s, color 0.3s",
+                      border: `2px solid ${record.Bank === "pending"
+                        ? "red"
+                        : record.Bank === "inprogress"
+                          ? "yellow"
+                          : "green"
+                        }`,
+                    }}
+                  >
+                    {BankOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
 
-              </td>
+                </td>
+                <td>
+                  <select
+                    value={record.SalaryEntry}
+                    onChange={(e) => handleSalaryEntryStatusChange(record._id, e.target.value)}
+                    style={{
+                      border: "none",
+                      padding: "5px 10px",
+                      borderRadius: "4px",
+                      color: "#000",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      transition: "border 0.3s, color 0.3s",
+                      border: `2px solid ${record.SalaryEntry === "pending"
+                        ? "red"
+                        : record.SalaryEntry === "inprogress"
+                          ? "yellow"
+                          : "green"
+                        }`,
+                    }}
+                  >
+                    {SalaryEntryOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
 
-              <td>
-              <select
-  value={record.Dividend}
-  onChange={(e) => handleDividendStatusChange(record._id, e.target.value)}
-  style={{
-    border: "none",
-    padding: "5px 10px",
-    borderRadius: "4px",
-    color: "#000",
-    fontWeight: "bold",
-    cursor: "pointer",
-    transition: "border 0.3s, color 0.3s",
-    border: `2px solid ${
-      record.Dividend === "pending"
-        ? "red"
-        : record.Dividend === "inprogress"
-        ? "yellow"
-        : "green"
-    }`,
-  }}
->
-  {DividendOptions.map((option) => (
-    <option key={option} value={option}>
-      {option}
-    </option>
-  ))}
-</select>
+                </td>
+                <td>
+                  <select
+                    value={record.Payslips}
+                    onChange={(e) => handlePayslipsStatusChange(record._id, e.target.value)}
+                    style={{
+                      border: "none",
+                      padding: "5px 10px",
+                      borderRadius: "4px",
+                      color: "#000",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      transition: "border 0.3s, color 0.3s",
+                      border: `2px solid ${record.Payslips === "pending"
+                        ? "red"
+                        : record.Payslips === "inprogress"
+                          ? "yellow"
+                          : "green"
+                        }`,
+                    }}
+                  >
+                    {PayslipsOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
 
-              </td>
-              <td>
-              <select
-  value={record.Corporatetax}
-  onChange={(e) => handleCorporatetaxStatusChange(record._id, e.target.value)}
-  style={{
-    border: "none",
-    padding: "5px 10px",
-    borderRadius: "4px",
-    color: "#000",
-    fontWeight: "bold",
-    cursor: "pointer",
-    transition: "border 0.3s, color 0.3s",
-    border: `2px solid ${
-      record.Corporatetax === "pending"
-        ? "red"
-        : record.Corporatetax === "inprogress"
-        ? "yellow"
-        : "green"
-    }`,
-  }}
->
-  {CorporatetaxOptions.map((option) => (
-    <option key={option} value={option}>
-      {option}
-    </option>
-  ))}
-</select>
+                </td>
 
-              </td>
-              <td>
-              <select
-  value={record.Vat}
-  onChange={(e) => handleVatStatusChange(record._id, e.target.value)}
-  style={{
-    border: "none",
-    padding: "5px 10px",
-    borderRadius: "4px",
-    color: "#000",
-    fontWeight: "bold",
-    cursor: "pointer",
-    transition: "border 0.3s, color 0.3s",
-    border: `2px solid ${
-      record.Vat === "pending"
-        ? "red"
-        : record.Vat === "inprogress"
-        ? "yellow"
-        : "green"
-    }`,
-  }}
->
-  {VatOptions.map((option) => (
-    <option key={option} value={option}>
-      {option}
-    </option>
-  ))}
-</select>
+                <td>
+                  <select
+                    value={record.Dividend}
+                    onChange={(e) => handleDividendStatusChange(record._id, e.target.value)}
+                    style={{
+                      border: "none",
+                      padding: "5px 10px",
+                      borderRadius: "4px",
+                      color: "#000",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      transition: "border 0.3s, color 0.3s",
+                      border: `2px solid ${record.Dividend === "pending"
+                        ? "red"
+                        : record.Dividend === "inprogress"
+                          ? "yellow"
+                          : "green"
+                        }`,
+                    }}
+                  >
+                    {DividendOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
 
-              </td>
-              <td>
-              <select
-  value={record.AnnualTax}
-  onChange={(e) => handleAnnualTaxStatusChange(record._id, e.target.value)}
-  style={{
-    border: "none",
-    padding: "5px 10px",
-    borderRadius: "4px",
-    color: "#000",
-    fontWeight: "bold",
-    cursor: "pointer",
-    transition: "border 0.3s, color 0.3s",
-    border: `2px solid ${
-      record.AnnualTax === "pending"
-        ? "red"
-        : record.AnnualTax === "inprogress"
-        ? "yellow"
-        : "green"
-    }`,
-  }}
->
-  {AnnualTaxOptions.map((option) => (
-    <option key={option} value={option}>
-      {option}
-    </option>
-  ))}
-</select>
+                </td>
+                <td>
+                  <select
+                    value={record.Corporatetax}
+                    onChange={(e) => handleCorporatetaxStatusChange(record._id, e.target.value)}
+                    style={{
+                      border: "none",
+                      padding: "5px 10px",
+                      borderRadius: "4px",
+                      color: "#000",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      transition: "border 0.3s, color 0.3s",
+                      border: `2px solid ${record.Corporatetax === "pending"
+                        ? "red"
+                        : record.Corporatetax === "inprogress"
+                          ? "yellow"
+                          : "green"
+                        }`,
+                    }}
+                  >
+                    {CorporatetaxOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
 
-              </td>
-              <td>
-              <select
-  value={record.CashFlowStatement}
-  onChange={(e) =>
-    handleCashFlowStatementStatusChange(record._id, e.target.value)
-  }
-  style={{
-    border: "none",
-    padding: "5px 10px",
-    borderRadius: "4px",
-    color: "#000",
-    fontWeight: "bold",
-    cursor: "pointer",
-    transition: "border 0.3s, color 0.3s",
-    border: `2px solid ${
-      record.CashFlowStatement === "pending"
-        ? "red"
-        : record.CashFlowStatement === "inprogress"
-        ? "yellow"
-        : "green"
-    }`,
-  }}
->
-  {CashFlowStatementOptions.map((option) => (
-    <option key={option} value={option}>
-      {option}
-    </option>
-  ))}
-</select>
+                </td>
+                <td>
+                  <select
+                    value={record.Vat}
+                    onChange={(e) => handleVatStatusChange(record._id, e.target.value)}
+                    style={{
+                      border: "none",
+                      padding: "5px 10px",
+                      borderRadius: "4px",
+                      color: "#000",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      transition: "border 0.3s, color 0.3s",
+                      border: `2px solid ${record.Vat === "pending"
+                        ? "red"
+                        : record.Vat === "inprogress"
+                          ? "yellow"
+                          : "green"
+                        }`,
+                    }}
+                  >
+                    {VatOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
 
-              </td>
-              <td>
-              <select
-  value={record.ProfitLoss}
-  onChange={(e) =>
-    handleProfitLossStatusChange(record._id, e.target.value)
-  }
-  style={{
-    border: "none",
-    padding: "5px 10px",
-    borderRadius: "4px",
-    color: "#000",
-    fontWeight: "bold",
-    cursor: "pointer",
-    transition: "border 0.3s, color 0.3s",
-    border: `2px solid ${
-      record.ProfitLoss === "pending"
-        ? "red"
-        : record.ProfitLoss === "inprogress"
-        ? "yellow"
-        : "green"
-    }`,
-  }}
->
-  {ProfitLossOptions.map((option) => (
-    <option key={option} value={option}>
-      {option}
-    </option>
-  ))}
-</select>
+                </td>
+                <td>
+                  <select
+                    value={record.AnnualTax}
+                    onChange={(e) => handleAnnualTaxStatusChange(record._id, e.target.value)}
+                    style={{
+                      border: "none",
+                      padding: "5px 10px",
+                      borderRadius: "4px",
+                      color: "#000",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      transition: "border 0.3s, color 0.3s",
+                      border: `2px solid ${record.AnnualTax === "pending"
+                        ? "red"
+                        : record.AnnualTax === "inprogress"
+                          ? "yellow"
+                          : "green"
+                        }`,
+                    }}
+                  >
+                    {AnnualTaxOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
 
-              </td>
-              <td>
-              <select
-  value={record.TrialBalance}
-  onChange={(e) =>
-    handleTrialBalanceStatusChange(record._id, e.target.value)
-  }
-  style={{
-    border: "none",
-    padding: "5px 10px",
-    borderRadius: "4px",
-    color: "#000",
-    fontWeight: "bold",
-    cursor: "pointer",
-    transition: "border 0.3s, color 0.3s",
-    border: `2px solid ${
-      record.TrialBalance === "pending"
-        ? "red"
-        : record.TrialBalance === "inprogress"
-        ? "yellow"
-        : "green"
-    }`,
-  }}
->
-  {TrialBalanceOptions.map((option) => (
-    <option key={option} value={option}>
-      {option}
-    </option>
-  ))}
-</select>
+                </td>
+                <td>
+                  <select
+                    value={record.CashFlowStatement}
+                    onChange={(e) =>
+                      handleCashFlowStatementStatusChange(record._id, e.target.value)
+                    }
+                    style={{
+                      border: "none",
+                      padding: "5px 10px",
+                      borderRadius: "4px",
+                      color: "#000",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      transition: "border 0.3s, color 0.3s",
+                      border: `2px solid ${record.CashFlowStatement === "pending"
+                        ? "red"
+                        : record.CashFlowStatement === "inprogress"
+                          ? "yellow"
+                          : "green"
+                        }`,
+                    }}
+                  >
+                    {CashFlowStatementOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
 
-              </td>
-              <td>{calculateRowSums(record).pending}</td>
-            <td>{calculateRowSums(record).inprogress}</td>
-            <td>{calculateRowSums(record).completed}</td>
-              <td>
-                <button onClick={() => handleDelete(record._id)}>Delete</button>
-              </td>
-            </tr>
+                </td>
+                <td>
+                  <select
+                    value={record.ProfitLoss}
+                    onChange={(e) =>
+                      handleProfitLossStatusChange(record._id, e.target.value)
+                    }
+                    style={{
+                      border: "none",
+                      padding: "5px 10px",
+                      borderRadius: "4px",
+                      color: "#000",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      transition: "border 0.3s, color 0.3s",
+                      border: `2px solid ${record.ProfitLoss === "pending"
+                        ? "red"
+                        : record.ProfitLoss === "inprogress"
+                          ? "yellow"
+                          : "green"
+                        }`,
+                    }}
+                  >
+                    {ProfitLossOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+
+                </td>
+                <td>
+                  <select
+                    value={record.TrialBalance}
+                    onChange={(e) =>
+                      handleTrialBalanceStatusChange(record._id, e.target.value)
+                    }
+                    style={{
+                      border: "none",
+                      padding: "5px 10px",
+                      borderRadius: "4px",
+                      color: "#000",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      transition: "border 0.3s, color 0.3s",
+                      border: `2px solid ${record.TrialBalance === "pending"
+                        ? "red"
+                        : record.TrialBalance === "inprogress"
+                          ? "yellow"
+                          : "green"
+                        }`,
+                    }}
+                  >
+                    {TrialBalanceOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+
+                </td>
+                <td>{calculateRowSums(record).pending}</td>
+                <td>{calculateRowSums(record).inprogress}</td>
+                <td>{calculateRowSums(record).completed}</td>
+                <td>
+                  <button onClick={() => handleDelete(record._id)}>Delete</button>
+                </td>
+              </tr>
+              {showPie && selectedCompany === record.Company && (
+                <tr>
+                  <td colSpan="18">
+                    <div className="chart-container">
+                      <Doughnut data={pieChartData} />
+                    </div>
+                  </td>
+                </tr>
+              )}
+            </>
           ))}
         </tbody>
       </table>
-      
-     
     </div>
-    
   );
 };
 
