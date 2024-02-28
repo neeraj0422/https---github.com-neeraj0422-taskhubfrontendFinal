@@ -5,7 +5,12 @@
   margin: 2rem auto;
   width: 90%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
+}
+
+.menu:hover{
+  width: 91%;
+  background-color: rgb(246, 246, 246);
 }
 
 .menu li {
@@ -44,7 +49,7 @@
 
 .menu.completed {
   background-color: #FFFFFF;
-  color: #34ef34;
+  color: #00c126;
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -62,10 +67,10 @@
 }
 
 .menu .completed {
-  background-color: #EB4F47;
+  background-color: #F68413;
   color: #FFFFFF;
 }
 
 .menu .complete {
-  background-color: #EB4F47;
+  background-color: #F68413;
 }

@@ -22,7 +22,7 @@
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         @include flex-center(flex, row, center, center);
         margin: 3rem 0;
-        background-color: #EB4F47; /* 30% - Secondary Color */
+        background-color: #F68413; /* 30% - Secondary Color */
     }
 
     .taskcount {
@@ -37,9 +37,13 @@
     }
 
     .button {
-        background-color: #EB4F47; /* 10% - Accent Color */
+        background-color: #F68413; /* 10% - Accent Color */
         color: white;
         width: 20rem;
+        border-radius: 61px;
+background: #d6cbeb;
+box-shadow:  27px 27px 38px #a39ab3,
+             -27px -27px 38px #fffcff;
     }
 
     .done .box {
@@ -66,7 +70,7 @@
     }
   
     .button {
-        background: linear-gradient(to bottom, #EB4F47, #D9443E); /* Gradient background */
+        background: linear-gradient(to bottom, #F68413, #F68413); /* Gradient background */
         color: white;
         width: 20rem;
         padding: 10px;
@@ -77,10 +81,15 @@
         cursor: pointer;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Deeper shadow effect */
+        
       
         &:hover {
-          background: linear-gradient(to bottom, #D9443E, #C23E36); /* Darken the background gradient on hover */
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Adjust the shadow on hover */
+          background: linear-gradient(to bottom, #316AAE, #316AAE); /* Darken the background gradient on hover */
+          
+        //   border-radius: 61px;
+
+box-shadow:  27px 27px 38px #a39ab3,
+             -27px -27px 38px #fffcff;
         }
       
         &:active {

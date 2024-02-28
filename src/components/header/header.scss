@@ -1,7 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: #4411ff; /* 60% - Dominant Color */
+  background-color: #003366; /* 60% - Dominant Color */
   align-items: center;
   height: 60px;
   padding: 0 20px;
@@ -14,7 +14,7 @@
   }
 
   .button {
-    background-color: #EB4F47; /* 30% - Secondary Color */
+    background-color: #F68413; /* 30% - Secondary Color */
     color: white;
     padding: 10px 20px;
     border: none;
@@ -23,7 +23,7 @@
   }
 
   .button:hover {
-    background-color: #4411ff; /* 10% - Accent Color on hover (matches header background) */
+    background-color: #316AAE; /* 10% - Accent Color on hover (matches header background) */
     color: white; /* Text color remains white on hover */
   }
 }

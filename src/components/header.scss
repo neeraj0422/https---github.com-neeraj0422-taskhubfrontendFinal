@@ -1,14 +1,13 @@
 .header {
     display: flex;
     justify-content: space-between;
-    background-color: #FFFFFF; /* 60% - Dominant Color */
     align-items: center;
     height: 60px;
     padding: 0 20px;
 
     .header__logo {
         h3 {
-            color: #EB4F47; /* 30% - Secondary Color */
+            color: #F68413; /* 30% - Secondary Color */
             font-weight: 300;
            
         }
@@ -27,13 +26,15 @@
             border: none;
             outline: none;
             transition: background-color 0.3s ease;
+            
+            
         }
 
         /* Apply styles when hovering over the button */
         button:hover {
-            background-color: #EB4F47; /* 10% - Accent Color */
+            background-color: #F68413; /* 10% - Accent Color */
             color: #FFFFFF; /* Text color matching the dominant color for contrast */
-            border-color: #EB4F47; /* Border color on hover */
+            border-color: #F68413; /* Border color on hover */
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Box shadow on hover */
         }
     }

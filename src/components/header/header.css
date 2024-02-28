@@ -31,7 +31,7 @@ body {
 }
 
 .header .button {
-  background-color: #EB4F47; /* 10% - Accent Color */
+  background-color: #F68413; /* 10% - Accent Color */
   color: #FFFFFF; /* Text color matching the header background color */
   padding: 10px 20px;
   border: none;
@@ -40,6 +40,6 @@ body {
 }
 
 .header .button:hover {
-  background-color: #EB4F47; /* 10% - Accent Color on hover */
+  background-color: #F68413; /* 10% - Accent Color on hover */
   color: #FFFFFF; /* Text color matching the header background color on hover */
 }

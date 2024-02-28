@@ -15,13 +15,26 @@
 }
 
 .addtask input {
+    margin-right: 12px;
     flex: 1;
     padding: 10px;
     border: none;
     outline: none;
     background-color: #FFFFFF; /* 60% - Dominant Color */
     border-radius: 5px;
+    box-shadow:  5px 5px 11px #a39ab3,
+    -5px -5px 11px #fffcff;
 }
+
+.addtask select{
+    box-shadow:  5px 5px 11px #a39ab3,
+    -5px -5px 11px #fffcff;
+    border: none;
+    outline: none;
+    height: 33px;
+    border-radius: 5px;
+}
+
 
 .addtask .calendar-button {
     width: 44px;
@@ -47,5 +60,5 @@
 }
 
 .addtask button:hover {
-    background-color: #EB4F47; /* 10% - Accent Color on hover */
+    background-color: #316AAE; /* 10% - Accent Color on hover */
 }

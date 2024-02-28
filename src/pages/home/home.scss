@@ -20,7 +20,11 @@
             margin-top: 1rem;
             font-size: 1.2rem;
             display: inline-block;
+            transition: all 500ms;
         }
+        .button:hover{
+                background-color: #316AAE; /* 30% - Secondary Color */
+        }            
     }
 
     .logo-container {
@@ -35,7 +39,7 @@
         position: relative;
         transform-style: preserve-3d;
         transition: transform 0.5s;
-        color: #EB4F47; /* 10% - Accent Color */
+        color: #F68413; /* 10% - Accent Color */
         
     }
 

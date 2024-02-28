@@ -34,15 +34,15 @@ th {
 
 /* Status-specific color coding */
 td select.pending {
-  background-color: #EB4F47; /* 10% - Accent Color */
+  background-color: #F68413; /* 10% - Accent Color */
 }
 
 td select.inprogress {
-  background-color: #EB4F47;
+  background-color: #F68413;
 }
 
 td select.completed {
-  background-color: #EB4F47;
+  background-color: #F68413;
 }
 
 /* Hover effect */
@@ -51,7 +51,7 @@ td select:hover {
 }
 
 button {
-  background-color: #EB4F47;
+  background-color: #F68413;
   color: #FFFFFF;
   border: none;
   padding: 5px 10px;
@@ -62,12 +62,14 @@ button {
 
 /* Hover effect */
 button:hover {
-  background-color: #EB4F47;
+  background-color: #316AAE;
+  box-shadow:  7px 7px 14px #a39ab3,
+             -7px -7px 14px #fffcff;
 }
 
 .month:hover span, .year:hover span {
   transform: scale(1.2); /* Increase the size by 10% on hover */
-  color: #EB4F47; /* Change to your desired hover color */
+  color: #F68413; /* Change to your desired hover color */
   box-shadow: 0 0 10px rgba(235, 79, 71, 0.7); /* Box shadow for pop-up effect */
 }
 
