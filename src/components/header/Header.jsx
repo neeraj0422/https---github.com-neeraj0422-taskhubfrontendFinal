@@ -27,15 +27,18 @@ const Header = () => {
           {/* Add the logo image with inline styling */}
         
           {/* <h5>Task HuB</h5> */}
-		  <img
-            src={logo}
-            alt='Your Logo'
-            style={{
-              width: '90px', // Adjust the width as needed
-              marginRight: '10px',
-              marginTop:'23px' // Adjust the margin as needed
-            }}
-          />
+          <a href="https://task-hub-green.vercel.app/dashboard">
+  <img
+    src={logo}
+    alt='Your Logo'
+    style={{
+      width: '90px', // Adjust the width as needed
+      marginRight: '10px',
+      marginTop:'23px' // Adjust the margin as needed
+    }}
+  />
+</a>
+
         </div>
         <div className='header__buttons'>
           {auth.currentUser && auth.currentUser.token ? (
