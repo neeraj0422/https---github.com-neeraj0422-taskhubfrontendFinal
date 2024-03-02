@@ -91,7 +91,7 @@ const AddTask = () => {
             value={selectedUser}
             onChange={(e) => setSelectedUser(e.target.value)}
           >
-            <option value='' disabled>
+            <option value={null}>
               Assign To
             </option>
             {users.map((user) => (
