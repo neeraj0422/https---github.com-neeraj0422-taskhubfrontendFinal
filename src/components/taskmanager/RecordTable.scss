@@ -76,9 +76,20 @@ button:hover {
 /* Rest of the existing styles */
 .month, .year {
   display: flex;
-  justify-content: flex-end; /* Move content to the right */
+  justify-content: space-between; /* Move content to the right */
   align-items: center; /* Center vertically */
   margin-bottom: 05px;
+}
+.search{
+  width:300px;
+  margin-right: 12px;
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 5px 5px 11px #a39ab3, -3px 1px 11px #fffcff;
 }
 
 .label {

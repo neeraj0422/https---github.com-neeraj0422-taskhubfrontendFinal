@@ -4,17 +4,28 @@ import { arrowClick, deleteItem } from "../../redux/taskSlice";
 import { useDispatch ,useSelector} from "react-redux";
 
 const ListCard = ({ item }) => {
+  console.log("item",item)
   // Destructure the 'item' prop
   const dispatch = useDispatch();
 
   const { auth } = useSelector((state) => ({ ...state }));
   const { currentUser, token } = auth;
-  const ArrowClick = (string) => {
-    dispatch(arrowClick(item, string,currentUser.id));
-  };
+  const statusArr = ["backlog","todo","doing","done"]
+  const ArrowClick = (status,direction ) => {
+   
+      let index = statusArr.indexOf(status)
+      let newStatus = direction=="left" ? statusArr[index -1] : statusArr[(index +1)]
+    dispatch(arrowClick(item, newStatus,currentUser.id));
+  
+}
   const handleDelete = () => {
     dispatch(deleteItem(item._id));
   };
+
+  const handleSelectChange = (event)=>{
+    const value = event.target.value;
+    dispatch(arrowClick(item, value,currentUser.id));
+  }
 
   const getStatusStyles = (status) => {
     switch (status) {
@@ -67,18 +78,24 @@ const ListCard = ({ item }) => {
           <p>{item?.lastModifiedBy?.username}</p>
         </li>
         <li>
-          <p>{item.status}</p>
+          {/* <p>{item.status}</p> */}
+          <select value={item.status} onChange={handleSelectChange} className="status-select">
+            <option value="backlog">backlog</option>
+            <option value="todo">todo</option>
+            <option value="doing">doing</option>
+            <option value="done">done</option>
+          </select>
         </li>
         <li className="list-card-button">
           <button
             disabled={item.status === "backlog"}
-            onClick={() => ArrowClick("left")}
+            onClick={() => ArrowClick(item.status,"left")}
           >
             <BiChevronLeft />
           </button>
           <button
             disabled={item.status === "done"}
-            onClick={() => ArrowClick("right")}
+            onClick={() => ArrowClick(item.status,"right")}
           >
             <BiChevronRight />
           </button>
@@ -89,6 +106,7 @@ const ListCard = ({ item }) => {
       </ul>
     </div>
   );
-};
+
+}
 
 export default ListCard;

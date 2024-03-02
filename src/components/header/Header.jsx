@@ -27,7 +27,7 @@ const Header = () => {
           {/* Add the logo image with inline styling */}
         
           {/* <h5>Task HuB</h5> */}
-          <a href="https://task-hub-green.vercel.app/dashboard">
+          <a href="/dashboard">
   <img
     src={logo}
     alt='Your Logo'

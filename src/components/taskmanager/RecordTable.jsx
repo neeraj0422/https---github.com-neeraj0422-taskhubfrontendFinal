@@ -5,10 +5,12 @@ import 'chart.js/auto';
 import { Doughnut } from 'react-chartjs-2';
 import PieChart from './PieChart';
 
+
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 const RecordTable = () => {
   const [records, setRecords] = useState([]);
+  const [allRecords, setAllRecords] = useState([]);
   const [PayslipsOptions] = useState(["pending", "inprogress", "completed"]);
   const [BaseconeOptions] = useState(["pending", "inprogress", "completed"]);
   const [BankOptions] = useState(["pending", "inprogress", "completed"]);
@@ -62,6 +64,7 @@ const RecordTable = () => {
     // Fetch records from the API
     axios.get(`https://taskhubbackenddd.onrender.com/table/records?month=${selectedMonth}&year=${selectedYear}`).then((response) => {
       setRecords(response.data);
+      setAllRecords(response.data);
     });
   }, [selectedMonth, selectedYear]);
   const handleBaseconeStatusChange = (id, Basecone) => {
@@ -74,6 +77,7 @@ const RecordTable = () => {
           record._id === id ? { ...record, Basecone } : record
         );
         setRecords(updatedRecords);
+        setAllRecords(updatedRecords);
       });
   };
   const handleBankStatusChange = (id, Bank) => {
@@ -86,6 +90,7 @@ const RecordTable = () => {
           record._id === id ? { ...record, Bank } : record
         );
         setRecords(updatedRecords);
+        setAllRecords(updatedRecords);
       });
   };
   const handleSalaryEntryStatusChange = (id, SalaryEntry) => {
@@ -98,6 +103,7 @@ const RecordTable = () => {
           record._id === id ? { ...record, SalaryEntry } : record
         );
         setRecords(updatedRecords);
+        setAllRecords(updatedRecords);
       });
   };
   const handlePayslipsStatusChange = (id, Payslips) => {
@@ -110,6 +116,7 @@ const RecordTable = () => {
           record._id === id ? { ...record, Payslips } : record
         );
         setRecords(updatedRecords);
+        setAllRecords(updatedRecords);
       });
   };
 
@@ -123,6 +130,7 @@ const RecordTable = () => {
           record._id === id ? { ...record, Dividend } : record
         );
         setRecords(updatedRecords);
+        setAllRecords(updatedRecords);
       });
   };
   const handleCorporatetaxStatusChange = (id, Corporatetax) => {
@@ -135,6 +143,7 @@ const RecordTable = () => {
           record._id === id ? { ...record, Corporatetax } : record
         );
         setRecords(updatedRecords);
+        setAllRecords(updatedRecords);
       });
   };
   const handleVatStatusChange = (id, Vat) => {
@@ -145,6 +154,7 @@ const RecordTable = () => {
         record._id === id ? { ...record, Vat } : record
       );
       setRecords(updatedRecords);
+      setAllRecords(updatedRecords);
     });
   };
   const handleAnnualTaxStatusChange = (id, AnnualTax) => {
@@ -157,6 +167,7 @@ const RecordTable = () => {
           record._id === id ? { ...record, AnnualTax } : record
         );
         setRecords(updatedRecords);
+        setAllRecords(updatedRecords);
       });
   };
   const handleCashFlowStatementStatusChange = (id, CashFlowStatement) => {
@@ -169,6 +180,7 @@ const RecordTable = () => {
           record._id === id ? { ...record, CashFlowStatement } : record
         );
         setRecords(updatedRecords);
+        setAllRecords(updatedRecords);
       });
   };
   const handleProfitLossStatusChange = (id, ProfitLoss) => {
@@ -181,6 +193,7 @@ const RecordTable = () => {
           record._id === id ? { ...record, ProfitLoss } : record
         );
         setRecords(updatedRecords);
+        setAllRecords(updatedRecords);
       });
   };
   const handleTrialBalanceStatusChange = (id, TrialBalance) => {
@@ -193,6 +206,7 @@ const RecordTable = () => {
           record._id === id ? { ...record, TrialBalance } : record
         );
         setRecords(updatedRecords);
+        setAllRecords(updatedRecords);
       });
   };
 
@@ -202,21 +216,30 @@ const RecordTable = () => {
       // Remove the deleted record from the local state
       const updatedRecords = records.filter((record) => record._id !== id);
       setRecords(updatedRecords);
+      setAllRecords(updatedRecords);
     });
   };
+
+  const handleSearch=(event)=>{
+  let valueToSearch = event.target.value.toLowerCase();
+  console.log(valueToSearch)
+
+  const filteredData = allRecords.filter((item)=>item.Administration_number.toString().includes(valueToSearch) || item.Company.toLowerCase().includes(valueToSearch)  )
+  console.log("filteredData",filteredData)
+  setRecords(filteredData)
+  }
 
   return (
     <div>
       <div className="month">
-        <span className="label">Select Month:</span>
+        <div style={{marginLeft:"25%"}}> <input type="text" className="search" onChange={handleSearch} placeholder="search for records..."/></div>
+       <div><span className="label">Select Month:</span>
         <select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
           {months.map((month, index) => (
             <option key={index + 1} value={index + 1}>{month}</option>
           ))}
         </select>
-      </div>
-
-      <div className="year">
+        <div className="year">
         <span className="label">Select Year:</span>
         <select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
           {[...Array(10).keys()].map((year) => (
@@ -226,6 +249,11 @@ const RecordTable = () => {
           ))}
         </select>
       </div>
+        </div>
+        
+      </div>
+
+      
 
       <table>
         <thead>
@@ -251,7 +279,7 @@ const RecordTable = () => {
           </tr>
         </thead>
         <tbody>
-          {records.map((record) => (
+          { records.map((record) => (
             <>
               <tr key={record._id}>
                 <td>{record.S_NO}</td>
@@ -599,6 +627,7 @@ const RecordTable = () => {
           ))}
         </tbody>
       </table>
+      {records.length ==0 && <h4 style={{display:"flex",justifyContent:"center",paddingTop:"10%", color:"red"}}>No Records found</h4>}
     </div>
   );
 };

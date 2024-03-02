@@ -118,11 +118,11 @@ export const getAllTasks = (token, id) => async (dispatch) => {
 	}
 };
 
-export const arrowClick = (item, string,userid) => async () => {
+export const arrowClick = (item, value,userid) => async () => {
 	let taskData = {
 		id: item._id,
 		status: item.status,
-		string,
+		value,
 		modifiedby:userid
 	};
 
