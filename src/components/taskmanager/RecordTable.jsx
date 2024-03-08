@@ -4,6 +4,10 @@ import './RecordTable.scss';
 import 'chart.js/auto';
 import { Doughnut } from 'react-chartjs-2';
 import PieChart from './PieChart';
+import Modal from '@mui/joy/Modal';
+import { Dialog } from '@mui/material';
+
+
 
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -45,6 +49,12 @@ const RecordTable = () => {
     setPieChartData(data);
     setSelectedCompany(record.Company);
     setShowPie(true);
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+    setShowPie(false);
   };
 
   // Define the calculateRowSums function
@@ -615,14 +625,15 @@ const RecordTable = () => {
                 </td>
               </tr>
               {showPie && selectedCompany === record.Company && (
-                <tr>
-                  <td colSpan="18">
-                    <div className="chart-container">
-                      <Doughnut data={pieChartData} />
-                    </div>
-                  </td>
-                </tr>
-              )}
+  <div className="pie-modal">
+    <button className="pie-modal__close-button" onClick={handleModalClose}>
+      X
+    </button>
+    <Doughnut data={pieChartData} />
+  </div>
+)}
+             
+             
             </>
           ))}
         </tbody>

@@ -122,15 +122,31 @@ button:hover {
   }
 }
 
-.pie-chart-container {
-  position: relative;
-  display: inline-block;
-  
-  width: 50px !important; /* Set your desired width */
-  height: 50px !important; /* Set your desired height */
 
+.pie-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 50;
+  max-width: 5px; /* adjust the width as desired */
+  max-height: 5px; /* adjust the height as desired */
+  
+}
+
+
+
+.pie-modal .pie-chart {
+  width: 100%;
+  height: auto;
+  max-width: 1px; /* adjust the width of the pie chart */
+  max-height: 1px; /* adjust the height of the pie chart */
 }
 .chart-container {
-  width: 200px;
-  height: 200px;
+  width: 220;
+  height: 220px;
 }
