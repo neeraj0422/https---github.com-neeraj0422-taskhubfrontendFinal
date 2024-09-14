@@ -1,5 +1,4 @@
 import './registration.scss';
-import '../../styles/components/_button.scss';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { signin } from '../../redux/authSlice';
@@ -31,20 +30,6 @@ const Signin = () => {
     );
   };
 
-  const buttonStyles = {
-    backgroundColor: isButtonPressed ? '#4411ff' : '#4681f4', // Adjust the pressed color as needed
-    color: 'white',
-    padding: '10px 20px',
-    border: 'none',
-    borderRadius: '5px',
-    transition: 'background-color 0.3s, color 0.3s',
-  };
-
-  const buttonHoverStyles = {
-    backgroundColor: 'white',
-    color: '#4411ff',
-  };
-
   const handleButtonPress = () => {
     setIsButtonPressed(true);
   };
@@ -63,7 +48,6 @@ const Signin = () => {
               type='email'
               name='email'
               value={state.email}
-              id=''
               placeholder='Enter Email'
               onChange={handleChange}
             />
@@ -73,7 +57,6 @@ const Signin = () => {
               type='password'
               name='password'
               value={state.password}
-              id=''
               placeholder='Enter Password'
               onChange={handleChange}
             />
@@ -81,12 +64,8 @@ const Signin = () => {
           <div className='form-group'>
             <button
               className='button'
-              style={buttonStyles}
-              onMouseEnter={() => this.setState(buttonHoverStyles)}
-              onMouseLeave={() => this.setState({})}
               onMouseDown={handleButtonPress}
               onMouseUp={handleButtonRelease}
-             
             >
               Sign In
             </button>

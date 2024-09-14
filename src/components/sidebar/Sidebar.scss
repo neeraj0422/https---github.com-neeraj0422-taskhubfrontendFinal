@@ -7,7 +7,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: background-color 0.3s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  transition: background-color 0.3s, width 0.3s, left 0.3s;
+  z-index: 1000;
 }
 
 /* Sidebar Title */
@@ -25,28 +30,13 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  /* Removed duplicate margin property */
   transition: opacity 500ms ease;
-}
-
-/* List Item Icons */
-.sidebar .list-item .icon {
-  margin-right: 0.5rem;
-}
-
-/* List Item Text */
-.sidebar .list-item .text {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 /* Hover Effect */
 .sidebar .list-item:hover {
   opacity: 0.4;
-}
-
-/* Active Item Styling */
-.sidebar .list-item.active {
-  font-weight: bold;
 }
 
 /* Logo Styling */
@@ -67,14 +57,85 @@
   margin-right: 15px;
 }
 
-/* Additional styling for the h5 element if needed */
 h5 {
   font-size: 18px;
-  /* Uncomment and set color if needed */
-  /* color: #333; */
 }
 
-/* Adjust sidebar position */
+/* Sidebar Margin */
 .sidebar {
   margin-top: 5rem;
+}
+
+/* Responsive Sidebar */
+@media (max-width: 768px) {
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%; /* Full width on mobile screens */
+    height: auto; /* Shrink to fit the content */
+    position: relative; /* Move it below the task board */
+    padding: 0.5rem;
+    margin-top: 2rem;
+    margin-left: 9rem;
+  }
+
+  /* Sidebar moves below content */
+  .dashboard__left {
+    width: 100%; /* Full width for mobile screens */
+    order: 2; /* Make it appear after the task board */
+    display: flex; /* Ensure the sidebar stays visible */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 3rem;
+  }
+
+  /* Stack sidebar items vertically below Task Board button */
+  .sidebar .list-item {
+    margin: 1rem 0;
+    width: 100%;
+    font-size: 1.2rem;
+    display: block;
+    text-align: center;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  /* Adjust logo and user info */
+  .logoo {
+    width: 30px;
+    height: 30px;
+  }
+
+  h5 {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  /* Adjust Task Board Button */
+  .createButton {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .taskcount {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  /* Adjust content area for mobile */
+  .dashboard__right {
+    margin-left: 0;
+    width: 100%;
+    padding-top: 2rem;
+    order: 1; /* Taskboard appears above sidebar */
+  }
 }

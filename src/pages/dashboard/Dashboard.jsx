@@ -36,11 +36,8 @@ const Dashboard = () => {
           <Sidebar />
         </div>
         <div className='dashboard__right'>
-          <div>
-			
-		  <div className='dashboard__rightContent'>
+          <div className='dashboard__rightContent'>
             <h2>Task Status Dashboard</h2>
-			
             <div className='taskcount'>
               <div className='todo box' style={{ color: 'white' }}>Todo - {pendingTask.length}</div>
               <div className='done box' style={{ color: 'white' }}>Complete - {completedTask.length}</div>
@@ -50,19 +47,10 @@ const Dashboard = () => {
                 Task Board
               </Link>
             </div>
-
-            {/* Use man image as background */}
-           
-
           </div>
-		  <div className="background-image">
-              <img
-                src={man}
-                alt="Your Logo"
-                className="manlogo"
-              />
-            </div>
-		  </div>
+          <div className='background-image'>
+            <img src={man} alt="Your Logo" className='manlogo' />
+          </div>
         </div>
       </div>
     </div>
