@@ -1,9 +1,8 @@
-/* RecordTable.css */
-
-/* Apply general table styles */
+/* General Table Styles */
 .white-text-table {
   color: #FFFFFF; /* 60% - Dominant Color */
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -26,15 +25,14 @@ th {
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
-  color: #FFFFFF; /* Text color matching the dominant color */
+  color: #FFFFFF;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Status-specific color coding */
 td select.pending {
-  background-color: #F68413; /* 10% - Accent Color */
+  background-color: #F68413; /* Accent Color */
 }
 
 td select.inprogress {
@@ -50,6 +48,7 @@ td select:hover {
   filter: brightness(1.2);
 }
 
+/* Button styles */
 button {
   background-color: #F68413;
   color: #FFFFFF;
@@ -60,69 +59,69 @@ button {
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Hover effect */
+/* Button hover effect */
 button:hover {
   background-color: #316AAE;
-  box-shadow:  7px 7px 14px #a39ab3,
-             -7px -7px 14px #fffcff;
+  box-shadow: 7px 7px 14px #a39ab3, -7px -7px 14px #fffcff;
+}
+
+/* Month and Year Styles */
+.month, .year {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
 }
 
 .month:hover span, .year:hover span {
-  transform: scale(1.2); /* Increase the size by 10% on hover */
-  color: #F68413; /* Change to your desired hover color */
-  box-shadow: 0 0 10px rgba(235, 79, 71, 0.7); /* Box shadow for pop-up effect */
+  transform: scale(1.2);
+  color: #F68413;
+  box-shadow: 0 0 10px rgba(235, 79, 71, 0.7);
 }
 
-/* Rest of the existing styles */
-.month, .year {
-  display: flex;
-  justify-content: space-between; /* Move content to the right */
-  align-items: center; /* Center vertically */
-  margin-bottom: 05px;
-}
-.search{
-  width:300px;
+/* Search Input */
+.search {
+  width: 300px;
   margin-right: 12px;
-    flex: 1;
-    padding: 10px;
-    border: none;
-    outline: none;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 5px 5px 11px #a39ab3, -3px 1px 11px #fffcff;
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 5px 5px 11px #a39ab3, -3px 1px 11px #fffcff;
 }
 
 .label {
   font-weight: bold;
-  margin-right: 10px; /* Add some right margin for separation */
+  margin-right: 10px;
 }
-// RecordTable.scss
+
+/* Pie Button */
 .pie-button {
-  background: linear-gradient(to bottom, #4caf50, #388e3c); /* Gradient background */
+  background: linear-gradient(to bottom, #4caf50, #388e3c);
   border: none;
   color: white;
   padding: 10px 20px;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Deeper shadow effect */
-
-  &:hover {
-    background: linear-gradient(to bottom, #45a049, #388e3c); /* Darken the background gradient on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Adjust the shadow on hover */
-  }
-
-  &:active {
-    transform: translateY(2px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reset the shadow on click */
-  }
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.pie-button:hover {
+  background: linear-gradient(to bottom, #45a049, #388e3c);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
 
+.pie-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Pie Modal */
 .pie-modal {
   position: fixed;
   top: 50%;
@@ -133,20 +132,102 @@ button:hover {
   border-radius: 3px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   z-index: 50;
-  max-width: 5px; /* adjust the width as desired */
-  max-height: 5px; /* adjust the height as desired */
-  
+  max-width: 90%;
+  max-height: 90%;
 }
-
-
 
 .pie-modal .pie-chart {
   width: 100%;
   height: auto;
-  max-width: 1px; /* adjust the width of the pie chart */
-  max-height: 1px; /* adjust the height of the pie chart */
+  max-width: 500px;
+  max-height: 500px;
 }
+
 .chart-container {
-  width: 220;
+  width: 220px;
   height: 220px;
+}
+
+/* Responsive Styles */
+
+/* Medium Screens (Tablets) */
+@media (max-width: 1024px) {
+  th, td {
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .search {
+    width: 250px;
+  }
+
+  .pie-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .chart-container {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+/* Small Screens (Mobile Phones) */
+@media (max-width: 768px) {
+  th, td {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .search {
+    width: 200px;
+  }
+
+  .pie-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .chart-container {
+    width: 150px;
+    height: 150px;
+  }
+
+  /* Adjust modal on mobile */
+  .pie-modal {
+    max-width: 90%;
+    max-height: 90%;
+  }
+
+  .pie-modal .pie-chart {
+    max-width: 300px;
+    max-height: 300px;
+  }
+}
+
+/* Very Small Screens (Mobile Phones) */
+@media (max-width: 480px) {
+  th, td {
+    padding: 8px;
+    font-size: 10px;
+  }
+
+  .search {
+    width: 150px;
+  }
+
+  .pie-button {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+
+  .chart-container {
+    width: 120px;
+    height: 120px;
+  }
+
+  .pie-modal .pie-chart {
+    max-width: 200px;
+    max-height: 200px;
+  }
 }

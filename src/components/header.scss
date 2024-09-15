@@ -4,38 +4,106 @@
     align-items: center;
     height: 60px;
     padding: 0 20px;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
 
-    .header__logo {
-        h3 {
-            color: #F68413; /* 30% - Secondary Color */
-            font-weight: 300;
-           
-        }
-        .img {
-            height: 21vh;
-            margin-top: 22px;
-            padding: 10px;
-        }
+.header__logo {
+    display: flex;
+    align-items: center;
+}
+
+.header__logo h3 {
+    color: #F68413; /* 30% - Secondary Color */
+    font-weight: 300;
+}
+
+.header__logo .img {
+    height: 21vh;
+    margin-top: 22px;
+    padding: 10px;
+}
+
+/* Buttons Section */
+.header__buttons {
+    display: flex;
+}
+
+.header__buttons button {
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for buttons */
+.header__buttons button:hover {
+    background-color: #F68413; /* 10% - Accent Color */
+    color: #FFFFFF;
+    border-color: #F68413;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Media Queries for Responsiveness */
+
+/* Medium Screens (Tablets) */
+@media (max-width: 1024px) {
+    .header {
+        padding: 0 10px;
+    }
+
+    .header__logo .img {
+        height: 18vh; /* Reduce logo height on tablets */
+    }
+
+    .header__buttons button {
+        padding: 8px; /* Slightly reduce button padding */
+    }
+}
+
+/* Small Screens (Mobile Phones) */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        height: auto;
+        padding: 0 5px;
+        align-items: flex-start;
+    }
+
+    .header__logo .img {
+        height: 15vh; /* Further reduce logo height */
+        margin-top: 10px;
+    }
+
+    .header__logo h3 {
+        font-size: 18px; /* Reduce font size for smaller screens */
     }
 
     .header__buttons {
-        button {
-            margin-left: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            outline: none;
-            transition: background-color 0.3s ease;
-            
-            
-        }
+        margin-top: 10px; /* Add spacing above buttons */
+        width: 100%; /* Allow buttons to span full width */
+        justify-content: flex-start;
+    }
 
-        /* Apply styles when hovering over the button */
-        button:hover {
-            background-color: #F68413; /* 10% - Accent Color */
-            color: #FFFFFF; /* Text color matching the dominant color for contrast */
-            border-color: #F68413; /* Border color on hover */
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Box shadow on hover */
-        }
+    .header__buttons button {
+        padding: 8px;
+        margin-left: 0;
+        margin-right: 10px; /* Adjust button margin */
+    }
+}
+
+/* Very Small Screens (Mobile Phones) */
+@media (max-width: 480px) {
+    .header__logo .img {
+        height: 12vh; /* Reduce logo height for very small screens */
+    }
+
+    .header__buttons {
+        flex-wrap: wrap; /* Wrap buttons if necessary */
+    }
+
+    .header__buttons button {
+        margin-bottom: 5px; /* Add space between wrapped buttons */
     }
 }

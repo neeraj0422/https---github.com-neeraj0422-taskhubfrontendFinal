@@ -5,6 +5,7 @@
     height: 100vh;
     background-color: #FFFFFF; /* 60% - Dominant Color */
     @include flex-center(flex, row, center, center);
+    position: relative; /* To position buttons inside the home container */
 
     &__container {
         width: 50%;
@@ -48,7 +49,31 @@
         height: 35%;
     }
 
-    // Responsive Design
+    /* Sign In/Sign Up Buttons */
+    .auth-buttons {
+        position: absolute;
+        top: 20px; /* Adjust as necessary */
+        right: 20px; /* Align to the right corner */
+        display: flex;
+        gap: 10px; /* Space between the buttons */
+
+        .button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            background-color: #F79A1F; /* 30% - Secondary Color */
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #316AAE; /* Accent color on hover */
+        }
+    }
+
+    /* Responsive Design */
     @media (max-width: 1024px) {
         &__container {
             width: 70%;
@@ -70,6 +95,11 @@
         .logo {
             width: 50%;
             height: 40%;
+        }
+
+        .auth-buttons {
+            right: 15px; /* Adjust button position for smaller screens */
+            top: 15px;
         }
     }
 
@@ -95,6 +125,11 @@
             width: 60%;
             height: 50%;
         }
+
+        .auth-buttons {
+            right: 10px; /* Adjust button position for smaller screens */
+            top: 10px;
+        }
     }
 
     @media (max-width: 480px) {
@@ -118,6 +153,11 @@
         .logo {
             width: 70%;
             height: 55%;
+        }
+
+        .auth-buttons {
+            right: 1.5rem; /* Adjust button position for smaller screens */
+            top: 1.5rem;
         }
     }
 }

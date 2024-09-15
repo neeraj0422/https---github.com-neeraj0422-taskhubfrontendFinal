@@ -7,9 +7,9 @@ const TaskManager = () => {
 	return (
 		<div>
 			<div className='taskmanager'>
-				<div className='taskmanager__left'>
+				{/* <div className='taskmanager__left'>
 					<Sidebar />
-				</div>
+				</div> */}
 				<div className='taskmanager__right'>
 					<div className='taskmanager__addtask'>
 						<AddTask />

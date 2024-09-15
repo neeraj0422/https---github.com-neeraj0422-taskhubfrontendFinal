@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     height: 15vh;
+    padding: 10px;
 }
 
 .addtask form {
@@ -12,6 +13,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .addtask input {
@@ -20,21 +22,19 @@
     padding: 10px;
     border: none;
     outline: none;
-    background-color: #FFFFFF; /* 60% - Dominant Color */
+    background-color: #FFFFFF;
     border-radius: 5px;
-    box-shadow:  5px 5px 11px #a39ab3,
-    -5px -5px 11px #fffcff;
+    box-shadow: 5px 5px 11px #a39ab3, -5px -5px 11px #fffcff;
 }
 
-.addtask select{
-    box-shadow:  5px 5px 11px #a39ab3,
-    -5px -5px 11px #fffcff;
+.addtask select {
+    box-shadow: 5px 5px 11px #a39ab3, -5px -5px 11px #fffcff;
     border: none;
     outline: none;
     height: 33px;
     border-radius: 5px;
+    margin-bottom: 10px; /* Add some margin for better spacing on smaller screens */
 }
-
 
 .addtask .calendar-button {
     width: 44px;
@@ -51,8 +51,8 @@
 }
 
 .addtask button {
-    background-color: #F79A1F; /* 30% - Secondary Color */
-    color: #FFFFFF; /* Text color matching the dominant color */
+    background-color: #F79A1F;
+    color: #FFFFFF;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -60,5 +60,46 @@
 }
 
 .addtask button:hover {
-    background-color: #316AAE; /* 10% - Accent Color on hover */
+    background-color: #316AAE;
+}
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 1024px) {
+    .addtask form {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .addtask form {
+        width: 100%;
+    }
+
+    .addtask input {
+        margin-bottom: 10px; /* Stack input and button on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .addtask {
+        height: auto; /* Adjust height for smaller screens */
+    }
+
+    .addtask form {
+        flex-direction: column; /* Stack form elements vertically */
+        align-items: stretch;
+    }
+
+    .addtask input, 
+    .addtask select, 
+    .addtask button, 
+    .addtask .calendar-button {
+        width: 100%; /* Full width for all elements */
+        margin-bottom: 10px;
+    }
+
+    .addtask .calendar-button {
+        height: 50px;
+    }
 }

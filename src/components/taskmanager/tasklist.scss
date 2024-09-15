@@ -7,12 +7,60 @@
     background-color: #FFFFFF; /* 60% - Dominant Color */
     padding: 1rem;
     font-weight: 500;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
 
-    li {
-        flex: 1;
+.list-header li {
+    flex: 1;
+    text-align: center; /* Center align list items for better appearance */
+}
+
+.list-header h5 {
+    font-size: 14px;
+    text-align: center; /* Center align headings */
+}
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 1024px) {
+    .list-header {
+        width: 95%;
     }
 
-    h5 {
-        font-size: 14px;
+    .list-header h5 {
+        font-size: 13px; /* Slightly reduce font size on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .list-header {
+        width: 100%;
+        flex-direction: column; /* Stack items vertically */
+        padding: 0.5rem;
+    }
+
+    .list-header li {
+        width: 100%; /* Full width for list items */
+        margin-bottom: 0.5rem; /* Add spacing between items */
+    }
+
+    .list-header h5 {
+        font-size: 12px; /* Reduce font size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .list-header {
+        padding: 0.5rem;
+        width: 100%; /* Full width on small screens */
+    }
+
+    .list-header li {
+        text-align: center; 
+        flex-direction: column;/* Align list items to the left on small screens */
+    }
+
+    .list-header h5 {
+        font-size: 11px; /* Further reduce font size for very small screens */
     }
 }

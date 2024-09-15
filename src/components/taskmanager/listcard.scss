@@ -6,9 +6,11 @@
   width: 90%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition: all 0.5s ease;
+  padding: 10px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
-.menu:hover{
+.menu:hover {
   width: 91%;
   background-color: rgb(246, 246, 246);
 }
@@ -17,14 +19,19 @@
   padding: 0.5rem;
   flex: 1;
   transition: background-color 0.3s ease, color 0.3s ease;
-  button {
-    margin: 6px;
-  }
-  p {
-    font-size: 14px;
-  }
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between; /* Distribute button and text */
+  align-items: center;
+}
+
+.menu li button {
+  margin: 6px;
+}
+
+.menu li p {
+  font-size: 14px;
 }
 
 .menu li::after {
@@ -34,7 +41,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  // background-color: #f01750;
   transition: transform 0.3s ease, opacity 0.3s ease;
   transform: scaleY(1);
   transform-origin: bottom;
@@ -74,8 +80,57 @@
 .menu .complete {
   background-color: #F68413;
 }
-.status-select{
+
+.status-select {
   height: 30px;
-    margin-left: -8px;
-    border-radius: 5px;
+  margin-left: -8px;
+  border-radius: 5px;
+}
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 1024px) {
+  .menu {
+    width: 95%;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu {
+    width: 100%;
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: stretch;
+  }
+
+  .menu li {
+    width: 100%; /* Ensure menu items take full width */
+    justify-content: space-between; /* Button and text well-aligned */
+    margin-bottom: 1rem;
+  }
+
+  .menu li p {
+    font-size: 12px; /* Adjust font size for readability on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .menu {
+    margin: 1rem auto;
+    width: 100%; /* Full width for smaller screens */
+  }
+
+  .menu li {
+    padding: 10px;
+    flex-direction: column; /* Stack content in each list item */
+    align-items: flex-start;
+  }
+
+  .menu li button {
+    margin-top: 8px;
+    align-self: flex-end; /* Align button to the right */
+  }
+
+  .menu li p {
+    font-size: 10px; /* Further reduce font size for very small screens */
+  }
 }
